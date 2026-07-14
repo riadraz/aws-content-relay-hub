@@ -1,0 +1,39 @@
+name: Post Japanese Articles to Qiita
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "articles/*-ja.md"
+
+jobs:
+  post-qiita-ja:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect changed Japanese articles
+        id: changed
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '\-ja.md$' || true)
+          echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Post JP articles to Qiita
+        if: steps.changed.outputs.changed_files != ''
+        env:
+          QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
+        run: |
+          for file in ${{ steps.changed.outputs.changed_files }}; do
+            echo "Posting JP article: $file"
+            npx ts-node scripts/qiita-post.ts "$file"
+          done

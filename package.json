@@ -1,0 +1,33 @@
+{
+  "name": "aws-content-relay-hub",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "post:qiita": "ts-node scripts/qiita-post.ts",
+    "update:qiita": "ts-node scripts/qiita-update.ts",
+    "sync:mirrors": "node scripts/sync-mirror-repos.js"
+  },
+  "dependencies": {
+    "@qiita/qiita-cli": "^1.9.1",
+    "js-yaml": "^4.1.0",
+    "node-fetch": "^3.3.2",
+    "zenn-cli": "^0.5.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.0"
+  },
+  "description": "以下へのクロスポスト用の単一ソース Markdown リポジトリ:",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riadraz/aws-content-relay-hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riadraz/aws-content-relay-hub/issues"
+  },
+  "homepage": "https://github.com/riadraz/aws-content-relay-hub#readme"
+}

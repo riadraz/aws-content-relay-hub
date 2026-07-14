@@ -1,0 +1,13 @@
+qiita:
+  enabled: true
+
+zenn:
+  enabled: true
+
+mirror_repos:
+  - name: my-blog-site
+    owner: your-github-username
+    target_path: content/posts
+  - name: docs-kiosk-platform
+    owner: your-github-username
+    target_path: docs/blog
