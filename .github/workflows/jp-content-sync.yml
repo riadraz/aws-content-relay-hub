@@ -28,7 +28,7 @@ jobs:
       - name: Detect changed JP articles (event payload)
         id: detect_event
         run: |
-          CHANGED=$(jq -r '.commits[].modified[], .commits[].added[]' "$GITHUB_EVENT_PATH" | grep '\-ja.md$' || true)
+          CHANGED=$(jq -r '.commits[].modified[], .commits[].added[]' "$GITHUB_EVENT_PATH" | grep '\-ja.md$' | tr '\n' ' ' || true)
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
       # ---------------------------------------------------------
@@ -38,7 +38,7 @@ jobs:
         if: steps.detect_event.outputs.changed_files == ''
         id: detect_fallback
         run: |
-          CHANGED=$(git ls-files "articles/*-ja.md" || true)
+          CHANGED=$(git ls-files "articles/*-ja.md" | tr '\n' ' ' || true)
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
       # ---------------------------------------------------------
@@ -46,7 +46,6 @@ jobs:
       # ---------------------------------------------------------
       - name: Post JP articles to Qiita
         if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
-        continue-on-error: false
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
         run: |
@@ -64,21 +63,15 @@ jobs:
         run: |
           echo "JP article updated. Zenn will auto-sync via GitHub連携."
 
-# ---------------------------------------------------------
-#  Multi-repo JP-only sync
-# ---------------------------------------------------------
+      # ---------------------------------------------------------
+      #  Multi-repo JP-only sync
+      # ---------------------------------------------------------
       - name: Sync JP articles to mirror repos
         if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
         env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-    # -----------------------------------------
-    # Mapping: owner/repo:destination-path
-    # Root-level sync (no folders)
-    # -----------------------------------------
-    MIRROR_REPOS: |
-      x-engineer/docs:/
-
-  run: |
-    FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
-    node scripts/sync-mirror-repos.js "$FILES" "${{ env.MIRROR_REPOS }}"
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          MIRROR_REPOS: |
+            x-engineer/docs:/
+        run: |
+          FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
+          node scripts/sync-mirror-repos.js "$FILES" "$MIRROR_REPOS"
