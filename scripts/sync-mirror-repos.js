@@ -75,6 +75,7 @@ async function syncFileToRepo(filePath, { owner, repo, dest }) {
     console.log(`✔ Synced: ${owner}/${repo}/${targetPath}`);
   } catch (err) {
     console.error(`✖ Failed syncing ${filePath} → ${owner}/${repo}`, err);
+    throw err;
   }
 }
 
