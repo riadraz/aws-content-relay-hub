@@ -9,6 +9,7 @@ type Frontmatter = {
   title: string;
   tags?: string[];
   private?: boolean;
+  qiita_id?: string | null;
 };
 
 function parseFrontmatter(raw: string): { meta: Frontmatter; body: string } | null {
@@ -44,6 +45,11 @@ async function postToQiita(articlePath: string) {
     return;
   }
   const { meta, body } = parsed;
+
+  if (meta.qiita_id && meta.qiita_id !== "null") {
+    console.log(`Skipping ${articlePath}: already posted (qiita_id: ${meta.qiita_id})`);
+    return;
+  }
 
   const qiitaBody =
     body +
