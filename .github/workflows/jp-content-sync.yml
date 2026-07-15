@@ -72,7 +72,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           MIRROR_REPOS: |
-            riadraz/docs:/
+            riadraz/x-engineer:/
         run: |
           FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
           node scripts/sync-mirror-repos.js "$FILES" "$MIRROR_REPOS"
