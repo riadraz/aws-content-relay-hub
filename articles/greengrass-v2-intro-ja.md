@@ -39,3 +39,4 @@ AWS IoT Greengrass V2 は、エッジデバイス上で
 - スマートシティ
 
 
+
