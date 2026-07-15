@@ -22,39 +22,55 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Detect changed JP articles
-        id: changed
+      # ---------------------------------------------------------
+      #  Reliable JP file detection (GitHub event payload)
+      # ---------------------------------------------------------
+      - name: Detect changed JP articles (event payload)
+        id: detect_event
         run: |
-          CHANGED=$(git diff --name-only HEAD~1 HEAD | grep '\-ja.md$' || true)
+          CHANGED=$(jq -r '.commits[].modified[], .commits[].added[]' "$GITHUB_EVENT_PATH" | grep '\-ja.md$' || true)
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
-      # -----------------------------
+      # ---------------------------------------------------------
+      #  Fallback: detect ANY JP files in repo (first-time publish)
+      # ---------------------------------------------------------
+      - name: Fallback detect JP articles
+        if: steps.detect_event.outputs.changed_files == ''
+        id: detect_fallback
+        run: |
+          CHANGED=$(git ls-files "articles/*-ja.md" || true)
+          echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
+
+      # ---------------------------------------------------------
       #  Qiita JP-only publishing
-      # -----------------------------
+      # ---------------------------------------------------------
       - name: Post JP articles to Qiita
-        if: steps.changed.outputs.changed_files != ''
+        if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
+        continue-on-error: false
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
         run: |
-          for file in ${{ steps.changed.outputs.changed_files }}; do
+          FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
+          for file in $FILES; do
             echo "Posting JP article to Qiita: $file"
             npx ts-node scripts/qiita-post.ts "$file"
           done
 
-      # -----------------------------
+      # ---------------------------------------------------------
       #  Zenn JP-only sync (GitHub連携)
-      # -----------------------------
+      # ---------------------------------------------------------
       - name: Notify Zenn auto-sync
-        if: steps.changed.outputs.changed_files != ''
+        if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
         run: |
           echo "JP article updated. Zenn will auto-sync via GitHub連携."
 
-      # -----------------------------
+      # ---------------------------------------------------------
       #  Multi-repo JP-only sync
-      # -----------------------------
+      # ---------------------------------------------------------
       - name: Sync JP articles to mirror repos
-        if: steps.changed.outputs.changed_files != ''
+        if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          node scripts/sync-mirror-repos.js "${{ steps.changed.outputs.changed_files }}"
+          FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
+          node scripts/sync-mirror-repos.js "$FILES"
