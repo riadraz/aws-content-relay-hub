@@ -45,7 +45,7 @@ async function syncFileToRepo(filePath, { owner, repo, dest }) {
 
   // Destination path (root-level sync)
   const filename = path.basename(filePath);
-  const targetPath = dest === "/" ? filename : `${dest}${filename}`;
+  const targetPath = dest === "/" ? filename : `${dest.replace(/\/$/, "")}/${filename}`;
 
   console.log(`→ Syncing ${filePath} to ${owner}/${repo}/${targetPath}`);
 
