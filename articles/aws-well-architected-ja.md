@@ -1,4 +1,10 @@
-**AWS Well-Architected Framework Musaをプロジェクトに適用するための実践ガイド**（6つの柱を含む）
+---
+title: AWS Well-Architected Framework 実践ガイド
+tags: [aws, well-architected, architecture, genai]
+private: false
+qiita_id: null
+lang: ja
+---
 
 ### AWS Well-Architected Frameworkとは？
 AWSが提供する**ベストプラクティス、質問、設計原則**の集合です。クラウド上で**セキュアで、信頼性が高く、効率的かつコスト最適化されたシステム**を構築するための指針となります。

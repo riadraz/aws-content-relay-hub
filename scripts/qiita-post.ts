@@ -11,9 +11,9 @@ type Frontmatter = {
   private?: boolean;
 };
 
-function parseFrontmatter(raw: string): { meta: Frontmatter; body: string } {
+function parseFrontmatter(raw: string): { meta: Frontmatter; body: string } | null {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) throw new Error("Frontmatter not found");
+  if (!match) return null;
 
   const meta: any = {};
   for (const line of match[1].split("\n")) {
@@ -38,7 +38,12 @@ function parseFrontmatter(raw: string): { meta: Frontmatter; body: string } {
 async function postToQiita(articlePath: string) {
   const fullPath = path.resolve(articlePath);
   const raw = fs.readFileSync(fullPath, "utf8");
-  const { meta, body } = parseFrontmatter(raw);
+  const parsed = parseFrontmatter(raw);
+  if (!parsed) {
+    console.warn(`Skipping ${articlePath}: no frontmatter found`);
+    return;
+  }
+  const { meta, body } = parsed;
 
   const qiitaBody =
     body +
