@@ -1,73 +1,94 @@
 import fs from "fs";
 import path from "path";
-import fetch from "node-fetch";
-import yaml from "js-yaml";
+import { Octokit } from "octokit";
 
-const GH_TOKEN = process.env.GH_TOKEN;
-if (!GH_TOKEN) throw new Error("GH_TOKEN is not set");
+const octokit = new Octokit({ auth: process.env.GH_TOKEN });
 
-const changedFilesArg = process.argv[2];
-if (!changedFilesArg) {
-  console.error("Usage: node scripts/sync-mirror-repos.js 'articles/a.md articles/b.md'");
-  process.exit(1);
+// ---------------------------------------------------------
+// Read CLI args
+// ---------------------------------------------------------
+const changedFiles = process.argv[2];
+const mappingRaw = process.argv[3];
+
+if (!changedFiles) {
+  console.log("No changed files passed.");
+  process.exit(0);
 }
-const changedFiles = changedFilesArg.split(/\s+/).filter(Boolean);
 
-const config = yaml.load(fs.readFileSync("config/platforms.yml", "utf8"));
-const mirrors = config.mirror_repos || [];
+if (!mappingRaw) {
+  console.log("No repo mapping provided.");
+  process.exit(0);
+}
 
-async function upsertFile(owner, repo, targetPath, content) {
-  const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${targetPath}`;
-  const headers = {
-    Authorization: `Bearer ${GH_TOKEN}`,
-    "Content-Type": "application/json",
-    "User-Agent": "aws-content-relay-hub-sync",
-  };
-
-  let sha = undefined;
-  const getRes = await fetch(apiBase, { headers });
-  if (getRes.status === 200) {
-    const json = await getRes.json();
-    sha = json.sha;
-  }
-
-  const body = {
-    message: `Sync article ${targetPath} from aws-content-relay-hub`,
-    content: Buffer.from(content).toString("base64"),
-    sha,
-  };
-
-  const putRes = await fetch(apiBase, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
+// ---------------------------------------------------------
+// Parse mapping: owner/repo:destinationPath
+// Example: x-engineer/docs:/
+// ---------------------------------------------------------
+const mappings = mappingRaw
+  .split("\n")
+  .map(line => line.trim())
+  .filter(Boolean)
+  .map(line => {
+    const [repo, dest] = line.split(":");
+    const [owner, name] = repo.split("/");
+    return { owner, repo: name, dest: dest || "/" };
   });
 
-  if (!putRes.ok) {
-    const text = await putRes.text();
-    throw new Error(
-      `Failed to upsert ${owner}/${repo}:${targetPath} - ${putRes.status} ${text}`
-    );
-  }
+console.log("Mappings:", mappings);
 
-  const json = await putRes.json();
-  console.log("Synced:", json.content.path, "->", `${owner}/${repo}`);
+// ---------------------------------------------------------
+// Sync each changed file to each mapped repo
+// ---------------------------------------------------------
+async function syncFileToRepo(filePath, { owner, repo, dest }) {
+  const fileContent = await fs.promises.readFile(filePath);
+  const base64Content = Buffer.from(fileContent).toString("base64");
+
+  // Destination path (root-level sync)
+  const filename = path.basename(filePath);
+  const targetPath = dest === "/" ? filename : `${dest}${filename}`;
+
+  console.log(`→ Syncing ${filePath} to ${owner}/${repo}/${targetPath}`);
+
+  try {
+    // Check if file exists in target repo
+    let sha = undefined;
+    try {
+      const existing = await octokit.request(
+        "GET /repos/{owner}/{repo}/contents/{path}",
+        { owner, repo, path: targetPath }
+      );
+      sha = existing.data.sha;
+    } catch (err) {
+      // File does not exist — ignore
+    }
+
+    // Push file
+    await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
+      owner,
+      repo,
+      path: targetPath,
+      message: `Sync JP article: ${filename}`,
+      content: base64Content,
+      sha
+    });
+
+    console.log(`✔ Synced: ${owner}/${repo}/${targetPath}`);
+  } catch (err) {
+    console.error(`✖ Failed syncing ${filePath} → ${owner}/${repo}`, err);
+  }
 }
 
-(async () => {
-  for (const file of changedFiles) {
-    const content = fs.readFileSync(file, "utf8");
-    const baseName = path.basename(file);
+// ---------------------------------------------------------
+// Main execution
+// ---------------------------------------------------------
+async function run() {
+  const files = changedFiles.split(" ").filter(Boolean);
 
-    for (const mirror of mirrors) {
-      const targetPath = path.posix.join(mirror.target_path, baseName);
-      console.log(
-        `Syncing ${file} to ${mirror.owner}/${mirror.name}:${targetPath}`
-      );
-      await upsertFile(mirror.owner, mirror.name, targetPath, content);
+  for (const file of files) {
+    for (const map of mappings) {
+      await syncFileToRepo(file, map);
     }
   }
-})().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+}
+
+run();
