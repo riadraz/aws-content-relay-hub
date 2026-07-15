@@ -2,7 +2,7 @@
 title: Lambda@Edge を使ったキオスク端末向け高速配信
 tags: [aws, lambda, edge, kiosk]
 private: false
-qiita_id: null
+qiita_id: 14e0e61175a3ca191199
 lang: ja
 ---
 

@@ -2,7 +2,7 @@
 title: AWS IoT Greengrass V2 入門
 tags: [aws, iot, greengrass, edge]
 private: false
-qiita_id: null
+qiita_id: 7527fb57bd74d8cb3ef9
 lang: ja
 ---
 
