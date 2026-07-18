@@ -2,6 +2,48 @@
 
 # コンテンツリレーハブ
 
+## 📚 Articles
+
+<details>
+<summary>AWS Well-Architected Framework 実践ガイド</summary>
+
+**Lang:** JA &nbsp;|&nbsp; **Tags:** `aws` `well-architected` `architecture` `genai`
+
+- 📄 [Source](articles/aws-well-architected-ja.md)
+- 🔗 [Qiita](https://qiita.com/items/8fa1ad7b17019c3969de)
+
+</details>
+
+<details>
+<summary>AWS IoT Greengrass V2 入門 / Introduction to AWS IoT Greengrass V2</summary>
+
+**Tags:** `aws` `iot` `greengrass` `edge`
+
+- 📄 [日本語 (JA)](articles/greengrass-v2-intro-ja.md) &nbsp;|&nbsp; [Qiita](https://qiita.com/items/7527fb57bd74d8cb3ef9)
+- 📄 [English (EN)](articles/greengrass-v2-intro-en.md)
+
+</details>
+
+<details>
+<summary>AWS IoT Core MQTT ベストプラクティス / Best Practices</summary>
+
+**Tags:** `aws` `iot` `mqtt`
+
+- 📄 [日本語 (JA)](articles/iot-core-mqtt-bestpractice-ja.md) &nbsp;|&nbsp; [Qiita](https://qiita.com/items/f9d6d64a7b58125e0fda)
+- 📄 [English (EN)](articles/iot-core-mqtt-bestpractice-en.md)
+
+</details>
+
+<details>
+<summary>Lambda@Edge を使ったキオスク端末向け高速配信 / Lambda@Edge for Kiosk Fast Delivery</summary>
+
+**Tags:** `aws` `lambda` `edge` `kiosk`
+
+- 📄 [日本語 (JA)](articles/lambda-edge-kiosk-ja.md) &nbsp;|&nbsp; [Qiita](https://qiita.com/items/14e0e61175a3ca191199)
+- 📄 [English (EN)](articles/lambda-edge-kiosk-en.md)
+
+</details>
+
 以下へのクロスポスト用の単一ソース Markdown リポジトリ:
 
 - Qiita (GitHub Actions + API経由)
