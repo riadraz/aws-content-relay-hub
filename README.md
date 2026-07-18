@@ -5,6 +5,16 @@
 ## 📚 Articles
 
 <details>
+<summary>aws-content-relay-hub アーキテクチャ解説 / Architecture Deep Dive</summary>
+
+**Tags:** `aws` `github-actions` `qiita` `zenn` `typescript`
+
+- 📄 [日本語 (JA)](articles/content-relay-hub-overview-ja.md)
+- 📄 [English (EN)](articles/content-relay-hub-overview-en.md)
+
+</details>
+
+<details>
 <summary>AWS Well-Architected Framework 実践ガイド</summary>
 
 **Lang:** JA &nbsp;|&nbsp; **Tags:** `aws` `well-architected` `architecture` `genai`
