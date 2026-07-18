@@ -1,5 +1,5 @@
 ---
-title: "aws-content-relay-hub — Architecture Deep Dive: Auto-Publishing from GitHub to Qiita, Zenn, and Mirror Repos"
+title: "aws-content-relay-hub: Auto-Publishing from GitHub to Qiita & Zenn"
 tags: [aws, github-actions, qiita, zenn, typescript]
 private: false
 qiita_id: null
