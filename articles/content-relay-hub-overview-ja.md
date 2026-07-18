@@ -4,6 +4,9 @@ tags: [aws, github-actions, qiita, zenn, typescript]
 private: false
 qiita_id: null
 lang: ja
+emoji: 🚀
+type: tech
+published: true
 ---
 
 # aws-content-relay-hub — GitHub から Qiita・Zenn・ミラーリポジトリへ一括配信するアーキテクチャ解説

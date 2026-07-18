@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import fetch from "node-fetch";
+import yaml from "js-yaml";
 
 const QIITA_TOKEN = process.env.QIITA_TOKEN;
 if (!QIITA_TOKEN) throw new Error("QIITA_TOKEN is not set");
@@ -71,8 +72,17 @@ async function postToQiita(articlePath: string) {
 
   if (!res.ok) throw new Error(`Qiita POST failed: ${res.status}`);
 
-  const json = await res.json();
+  const json: any = await res.json();
   console.log("Posted to Qiita:", json.id, json.url);
+
+  const mappingPath = path.resolve("config/mapping.yml");
+  const mapping: any = yaml.load(fs.readFileSync(mappingPath, "utf8")) ?? { articles: {} };
+  const filename = path.basename(articlePath);
+  mapping.articles ??= {};
+  mapping.articles[filename] ??= {};
+  mapping.articles[filename].qiita_id = json.id;
+  fs.writeFileSync(mappingPath, yaml.dump(mapping));
+  console.log(`Updated mapping.yml: ${filename} → ${json.id}`);
 }
 
 const articlePath = process.argv[2];

@@ -56,6 +56,15 @@ jobs:
             sleep 2
           done
 
+      - name: Commit updated mapping.yml
+        if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add config/mapping.yml
+          git diff --cached --quiet || git commit -m "chore: update mapping.yml with Qiita IDs [skip ci]"
+          git push
+
       # ---------------------------------------------------------
       #  Zenn JP-only sync (GitHub連携)
       # ---------------------------------------------------------

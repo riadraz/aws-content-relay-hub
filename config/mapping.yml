@@ -1,0 +1,16 @@
+articles:
+  aws-well-architected-ja.md:
+    qiita_id: 8fa1ad7b17019c3969de
+    zenn_slug: aws-well-architected-ja
+  greengrass-v2-intro-ja.md:
+    qiita_id: 7527fb57bd74d8cb3ef9
+    zenn_slug: greengrass-v2-intro-ja
+  iot-core-mqtt-bestpractice-ja.md:
+    qiita_id: f9d6d64a7b58125e0fda
+    zenn_slug: iot-core-mqtt-bestpractice-ja
+  lambda-edge-kiosk-ja.md:
+    qiita_id: 14e0e61175a3ca191199
+    zenn_slug: lambda-edge-kiosk-ja
+  content-relay-hub-overview-ja.md:
+    qiita_id: null
+    zenn_slug: content-relay-hub-overview-ja
