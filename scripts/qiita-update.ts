@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import fetch from "node-fetch";
+import yaml from "js-yaml";
 
 const QIITA_TOKEN = process.env.QIITA_TOKEN;
 if (!QIITA_TOKEN) throw new Error("QIITA_TOKEN is not set");
@@ -15,24 +16,7 @@ type Frontmatter = {
 function parseFrontmatter(raw: string): { meta: Frontmatter; body: string } {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) throw new Error("Frontmatter not found");
-
-  const meta: any = {};
-  for (const line of match[1].split("\n")) {
-    const kv = line.match(/^(\w+):\s*(.+)$/);
-    if (!kv) continue;
-    const key = kv[1];
-    let value = kv[2].trim();
-
-    if (value.startsWith("[") && value.endsWith("]")) {
-      value = value.slice(1, -1);
-      meta[key] = value.split(",").map((v) => v.trim());
-    } else if (value === "true" || value === "false") {
-      meta[key] = value === "true";
-    } else {
-      meta[key] = value.replace(/^["']|["']$/g, "");
-    }
-  }
-
+  const meta = yaml.load(match[1]) as any;
   return { meta: meta as Frontmatter, body: match[2].trim() };
 }
 
