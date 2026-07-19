@@ -34,13 +34,13 @@ jobs:
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
       # ---------------------------------------------------------
-      #  Fallback: detect ANY JP files in repo (first-time publish)
+      #  Fallback: detect only files changed in the latest commit
       # ---------------------------------------------------------
       - name: Fallback detect JP articles
         if: steps.detect_event.outputs.changed_files == ''
         id: detect_fallback
         run: |
-          CHANGED=$(git ls-files "articles/*-ja.md" | tr '\n' ' ' || true)
+          CHANGED=$(git diff-tree --no-commit-id -r --name-only HEAD | grep '\-ja.md$' | tr '\n' ' ' || true)
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
       # ---------------------------------------------------------
@@ -48,6 +48,7 @@ jobs:
       # ---------------------------------------------------------
       - name: Post JP articles to Qiita
         if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
+        continue-on-error: true
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
         run: |

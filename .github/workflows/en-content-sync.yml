@@ -34,11 +34,12 @@ jobs:
         if: steps.detect_event.outputs.changed_files == ''
         id: detect_fallback
         run: |
-          CHANGED=$(git ls-files "articles/*-en.md" | tr '\n' ' ' || true)
+          CHANGED=$(git diff-tree --no-commit-id -r --name-only HEAD | grep '\-en.md$' | tr '\n' ' ' || true)
           echo "changed_files=$CHANGED" >> $GITHUB_OUTPUT
 
       - name: Post EN articles to Qiita
         if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''
+        continue-on-error: true
         env:
           QIITA_TOKEN: ${{ secrets.QIITA_TOKEN }}
         run: |
