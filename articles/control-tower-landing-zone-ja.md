@@ -50,3 +50,4 @@ resource "aws_organizations_account" "workload" {
 
 Control Tower + Terraform により、新規アカウント発行からセキュリティ設定まで**15分で完了**します。
 
+
