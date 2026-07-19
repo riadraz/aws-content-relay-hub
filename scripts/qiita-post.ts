@@ -53,7 +53,10 @@ async function postToQiita(articlePath: string) {
     }),
   });
 
-  if (!res.ok) throw new Error(`Qiita POST failed: ${res.status}`);
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`Qiita POST failed: ${res.status} ${errBody}`);
+  }
 
   const json: any = await res.json();
   console.log("Posted to Qiita:", json.id, json.url);
