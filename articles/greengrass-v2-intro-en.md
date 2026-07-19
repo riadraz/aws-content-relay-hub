@@ -12,3 +12,4 @@ This is the **English version**.
 日本語版はこちら → [Japanese Version](greengrass-v2-intro-ja.md)
 
 ---
+
