@@ -1,4 +1,4 @@
----
+----
 title: AWS Control Tower ランディングゾーン自動構築ガイド
 tags: [aws, controltower, terraform, iac, landingzone]
 private: false
@@ -7,7 +7,7 @@ lang: ja
 emoji: 🚀
 type: tech
 published: true
----
+----
 
 # AWS Control Tower ランディングゾーン自動構築ガイド
 
