@@ -9,6 +9,8 @@ on:
 jobs:
   en-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -54,7 +56,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add config/mapping.yml
           git diff --cached --quiet || git commit -m "chore: update mapping.yml with Qiita IDs [skip ci]"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
       - name: Sync EN articles to mirror repos
         if: steps.detect_event.outputs.changed_files != '' || steps.detect_fallback.outputs.changed_files != ''

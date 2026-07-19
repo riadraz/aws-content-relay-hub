@@ -9,6 +9,8 @@ on:
 jobs:
   jp-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -63,7 +65,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add config/mapping.yml
           git diff --cached --quiet || git commit -m "chore: update mapping.yml with Qiita IDs [skip ci]"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
 
       # ---------------------------------------------------------
       #  Zenn JP-only sync (GitHub連携)
