@@ -14,3 +14,15 @@ articles:
   content-relay-hub-overview-ja.md:
     qiita_id: null
     zenn_slug: content-relay-hub-overview-ja
+  content-relay-hub-overview-en.md:
+    qiita_id: 27647395e4fe1e9c96c3
+    zenn_slug: content-relay-hub-overview-en
+  greengrass-v2-intro-en.md:
+    qiita_id: null
+    zenn_slug: greengrass-v2-intro-en
+  iot-core-mqtt-bestpractice-en.md:
+    qiita_id: null
+    zenn_slug: iot-core-mqtt-bestpractice-en
+  lambda-edge-kiosk-en.md:
+    qiita_id: null
+    zenn_slug: lambda-edge-kiosk-en
