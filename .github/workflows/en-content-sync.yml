@@ -45,7 +45,7 @@ jobs:
           FILES="${{ steps.detect_event.outputs.changed_files }}${{ steps.detect_fallback.outputs.changed_files }}"
           for file in $FILES; do
             echo "Posting EN article to Qiita: $file"
-            npx tsx scripts/qiita-post.ts "$file"
+            npx tsx scripts/qiita-sync.ts "$file"
             sleep 2
           done
 
