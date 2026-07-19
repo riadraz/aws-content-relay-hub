@@ -9,7 +9,7 @@ type: tech
 published: true
 ---
 
-# aws-content-relay-hub — Architecture Deep Dive: Auto-Publishing from GitHub to Qiita, Zenn, and Mirror Repos
+# aws-content-relay-hub —  Architecture Deep Dive: Auto-Publishing from GitHub to Qiita, Zenn, and Mirror Repos
 
 日本語版はこちら → [Japanese Version](content-relay-hub-overview-ja.md)
 
