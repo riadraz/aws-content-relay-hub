@@ -169,3 +169,4 @@ await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
 aws-content-relay-hub is a **simple fan-out architecture** combining thin CLI scripts with GitHub Actions. Each integration (Qiita, Zenn, mirrors) is independently replaceable with no shared library layer, keeping maintenance overhead low.
 
 If you manage a technical blog across multiple platforms, this pattern is worth adopting.
+
