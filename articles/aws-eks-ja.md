@@ -1,3 +1,18 @@
+---
+title: AWS EKS 2026JULY JA
+tags: [aws, github-actions, qiita, zenn, typescript]
+private: false
+qiita_id: null
+lang: ja
+emoji: "🔥"           # 絵文字（1文字）
+type: "tech"          # tech / idea
+topics:               # タグ（AWS, Infrastructure）
+  - EKS
+  - EC2              
+published: true       # true: 公開 / false: 下書き
+published_at: 2026-07-20 13:00  # 予約公開（任意）
+---
+
 # AWS EKS (Elastic Kubernetes Service) の概要
 
 Amazon EKSは、AWS上でKubernetesを運用するためのマネージドサービスです。
