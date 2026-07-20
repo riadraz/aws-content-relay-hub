@@ -13,6 +13,14 @@
   <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
   <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
   <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
+   <div>• <a href="docs/aws-security.md">AWSのセキュリティとコンプライアンス</a></div>
+  <div>• <a href="docs/aws-well-architected-ja.md">AWS Well-Architected フレームワーク</a></div>
+  <div>• <a href="docs/cost-optimization.md">AWSコスト最適化</a></div>
+  <div>• <a href="docs/db-migration.md">AWS DB移行</a></div>
+  <div>• <a href="docs/greengrass-v2-intro-ja.md">AWS IoT Greengrass V2 入門</a></div>
+  <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
+  <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
+  <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
 </div>
 
 
