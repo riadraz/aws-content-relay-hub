@@ -4,7 +4,7 @@
 
 <details>
 <summary><b>📂 articles/ フォルダの記事を見る</b></summary>
-
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; padding: 10px 0;">
 - [Content Relay Hub 日本語 (JA)](articles/content-relay-hub-overview-ja.md)
 - [Content Relay Hub English (EN)](articles/content-relay-hub-overview-en.md)
 - [Aws Well Architected 日本語 (JA)](articles/aws-well-architected-ja.md)
@@ -18,7 +18,7 @@
 - [Aws Lambda Edge 日本語 (JA)](articles/lambda-edge-kiosk-ja.md)
 - [Qiita](https://qiita.com/items/14e0e61175a3ca191199)
 - [Aws Lambda Edge English (EN)](articles/lambda-edge-kiosk-en.md)
-
+</div>
 </details>
 
 ## 使い方
