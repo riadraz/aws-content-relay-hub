@@ -4,33 +4,19 @@
 <details>
 <summary><b>📂 docs/ フォルダの記事を見る</b></summary>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; padding: 15px 0;">
-  <div>• <a href="docs/aws-security.md">AWSのセキュリティとコンプライアンス</a></div>
-  <div>• <a href="docs/aws-well-architected-ja.md">AWS Well-Architected フレームワーク</a></div>
-  <div>• <a href="docs/cost-optimization.md">AWSコスト最適化</a></div>
-  <div>• <a href="docs/db-migration.md">AWS DB移行</a></div>
-  <div>• <a href="docs/greengrass-v2-intro-ja.md">AWS IoT Greengrass V2 入門</a></div>
-  <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
-  <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
-  <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
-   <div>• <a href="docs/aws-security.md">AWSのセキュリティとコンプライアンス</a></div>
-  <div>• <a href="docs/aws-well-architected-ja.md">AWS Well-Architected フレームワーク</a></div>
-  <div>• <a href="docs/cost-optimization.md">AWSコスト最適化</a></div>
-  <div>• <a href="docs/db-migration.md">AWS DB移行</a></div>
-  <div>• <a href="docs/greengrass-v2-intro-ja.md">AWS IoT Greengrass V2 入門</a></div>
-  <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
-  <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
-  <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
-   <div>• <a href="docs/aws-security.md">AWSのセキュリティとコンプライアンス</a></div>
-  <div>• <a href="docs/aws-well-architected-ja.md">AWS Well-Architected フレームワーク</a></div>
-  <div>• <a href="docs/cost-optimization.md">AWSコスト最適化</a></div>
-  <div>• <a href="docs/db-migration.md">AWS DB移行</a></div>
-  <div>• <a href="docs/greengrass-v2-intro-ja.md">AWS IoT Greengrass V2 入門</a></div>
-  <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
-  <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
-  <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
-</div>
-
+- [Content Relay Hub 日本語 (JA)](articles/content-relay-hub-overview-ja.md)
+- [Content Relay Hub English (EN)](articles/content-relay-hub-overview-en.md)
+- [Aws Well Architected 日本語 (JA)](articles/aws-well-architected-ja.md)
+- [Qiita](https://qiita.com/items/8fa1ad7b17019c3969de)
+- [Aws Greengrass V2 日本語 (JA)](articles/greengrass-v2-intro-ja.md)
+- [Qiita](https://qiita.com/items/7527fb57bd74d8cb3ef9)
+- [Aws Greengrass v2 English (EN)](articles/greengrass-v2-intro-en.md)
+- [Aws Iot Mqtt 日本語 (JA)](articles/iot-core-mqtt-bestpractice-ja.md)
+- [Qiita](https://qiita.com/items/f9d6d64a7b58125e0fda)
+- [Aws Iot Mqtt English (EN)](articles/iot-core-mqtt-bestpractice-en.md)
+- [Aws Lambda Edge 日本語 (JA)](articles/lambda-edge-kiosk-ja.md)
+- [Qiita](https://qiita.com/items/14e0e61175a3ca191199)
+- [Aws Lambda Edge English (EN)](articles/lambda-edge-kiosk-en.md)
 
 </details>
 
