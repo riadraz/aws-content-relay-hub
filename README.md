@@ -4,24 +4,17 @@
 <details>
 <summary><b>📂 docs/ フォルダの記事を見る</b></summary>
 
-<table>
-  <tr>
-    <td>[AWSのセキュリティとコンプライアンス](docs/aws-security.md)</td>
-    <td>[AWS Well-Architected フレームワーク](docs/aws-well-architected-ja.md)</td>
-  </tr>
-  <tr>
-    <td>[AWSコスト最適化](docs/cost-optimization.md)</td>
-    <td>[AWS DB移行](docs/db-migration.md)</td>
-  </tr>
-  <tr>
-    <td>[AWS IoT Greengrass V2 入門](docs/greengrass-v2-intro-ja.md)</td>
-    <td>[AWS IoT Core MQTT ベストプラクティス](docs/iot-core-mqtt-bestpractice-ja.md)</td>
-  </tr>
-  <tr>
-    <td>[Lambda Edge キオスク](docs/lambda-edge-kiosk-ja.md)</td>
-    <td>[AWS コンテンツリレーハブ](content-relay-hub-overview-ja.md)</td>
-  </tr>
-</table>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; padding: 15px 0;">
+  <div>• <a href="docs/aws-security.md">AWSのセキュリティとコンプライアンス</a></div>
+  <div>• <a href="docs/aws-well-architected-ja.md">AWS Well-Architected フレームワーク</a></div>
+  <div>• <a href="docs/cost-optimization.md">AWSコスト最適化</a></div>
+  <div>• <a href="docs/db-migration.md">AWS DB移行</a></div>
+  <div>• <a href="docs/greengrass-v2-intro-ja.md">AWS IoT Greengrass V2 入門</a></div>
+  <div>• <a href="docs/iot-core-mqtt-bestpractice-ja.md">AWS IoT Core MQTT ベストプラクティス</a></div>
+  <div>• <a href="docs/lambda-edge-kiosk-ja.md">Lambda Edge キオスク</a></div>
+  <div>• <a href="content-relay-hub-overview-ja.md">AWS コンテンツリレーハブ</a></div>
+</div>
+
 
 </details>
 
