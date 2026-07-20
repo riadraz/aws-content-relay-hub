@@ -1,25 +1,30 @@
 # aws-content-relay-hub
 
 # コンテンツリレーハブ
-
 <details>
-<summary><b>📂 articles/ フォルダの記事を見る</b></summary>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; padding: 10px 0;">
-- [Content Relay Hub 日本語 (JA)](articles/content-relay-hub-overview-ja.md)
-- [Content Relay Hub English (EN)](articles/content-relay-hub-overview-en.md)
-- [Aws Well Architected 日本語 (JA)](articles/aws-well-architected-ja.md)
-- [Qiita](https://qiita.com/items/8fa1ad7b17019c3969de)
-- [Aws Greengrass V2 日本語 (JA)](articles/greengrass-v2-intro-ja.md)
-- [Qiita](https://qiita.com/items/7527fb57bd74d8cb3ef9)
-- [Aws Greengrass v2 English (EN)](articles/greengrass-v2-intro-en.md)
-- [Aws Iot Mqtt 日本語 (JA)](articles/iot-core-mqtt-bestpractice-ja.md)
-- [Qiita](https://qiita.com/items/f9d6d64a7b58125e0fda)
-- [Aws Iot Mqtt English (EN)](articles/iot-core-mqtt-bestpractice-en.md)
-- [Aws Lambda Edge 日本語 (JA)](articles/lambda-edge-kiosk-ja.md)
-- [Qiita](https://qiita.com/items/14e0e61175a3ca191199)
-- [Aws Lambda Edge English (EN)](articles/lambda-edge-kiosk-en.md)
-</div>
+<summary><b>📂 docs/ フォルダの記事を見る</b></summary>
+
+<table>
+  <tr>
+    <td>[AWSのセキュリティとコンプライアンス](docs/aws-security.md)</td>
+    <td>[AWS Well-Architected フレームワーク](docs/aws-well-architected-ja.md)</td>
+  </tr>
+  <tr>
+    <td>[AWSコスト最適化](docs/cost-optimization.md)</td>
+    <td>[AWS DB移行](docs/db-migration.md)</td>
+  </tr>
+  <tr>
+    <td>[AWS IoT Greengrass V2 入門](docs/greengrass-v2-intro-ja.md)</td>
+    <td>[AWS IoT Core MQTT ベストプラクティス](docs/iot-core-mqtt-bestpractice-ja.md)</td>
+  </tr>
+  <tr>
+    <td>[Lambda Edge キオスク](docs/lambda-edge-kiosk-ja.md)</td>
+    <td>[AWS コンテンツリレーハブ](content-relay-hub-overview-ja.md)</td>
+  </tr>
+</table>
+
 </details>
+
 
 ## 使い方
 
