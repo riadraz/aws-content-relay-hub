@@ -5,19 +5,19 @@
 <details>
 <summary><b>📂 articles/ フォルダの記事を見る</b></summary>
 
-- [日本語 (JA)](articles/content-relay-hub-overview-ja.md)
-- [English (EN)](articles/content-relay-hub-overview-en.md)
-- [日本語 (JA)](articles/aws-well-architected-ja.md)
+- [Content Relay Hub 日本語 (JA)](articles/content-relay-hub-overview-ja.md)
+- [Content Relay Hub English (EN)](articles/content-relay-hub-overview-en.md)
+- [Aws Well Architected 日本語 (JA)](articles/aws-well-architected-ja.md)
 - [Qiita](https://qiita.com/items/8fa1ad7b17019c3969de)
-- [日本語 (JA)](articles/greengrass-v2-intro-ja.md)
+- [Aws Greengrass V2 日本語 (JA)](articles/greengrass-v2-intro-ja.md)
 - [Qiita](https://qiita.com/items/7527fb57bd74d8cb3ef9)
-- [English (EN)](articles/greengrass-v2-intro-en.md)
-- [日本語 (JA)](articles/iot-core-mqtt-bestpractice-ja.md)
+- [Aws Greengrass v2 English (EN)](articles/greengrass-v2-intro-en.md)
+- [Aws Iot Mqtt 日本語 (JA)](articles/iot-core-mqtt-bestpractice-ja.md)
 - [Qiita](https://qiita.com/items/f9d6d64a7b58125e0fda)
-- [English (EN)](articles/iot-core-mqtt-bestpractice-en.md)
-- [日本語 (JA)](articles/lambda-edge-kiosk-ja.md)
+- [Aws Iot Mqtt English (EN)](articles/iot-core-mqtt-bestpractice-en.md)
+- [Aws Lambda Edge 日本語 (JA)](articles/lambda-edge-kiosk-ja.md)
 - [Qiita](https://qiita.com/items/14e0e61175a3ca191199)
-- [English (EN)](articles/lambda-edge-kiosk-en.md)
+- [Aws Lambda Edge English (EN)](articles/lambda-edge-kiosk-en.md)
 
 </details>
 
