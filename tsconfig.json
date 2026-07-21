@@ -10,5 +10,5 @@
   "ts-node": {
     "esm": true
   },
-  "include": ["scripts/**/*.ts"]
+  "include": ["scripts/**/*.ts", "scripts/qiita-sync.ts.disabled", "scripts/qiita-update.ts.disabled"]
 }
